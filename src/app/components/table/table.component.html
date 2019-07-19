@@ -1,0 +1,33 @@
+<div class="table-container">
+    <table class="table table-stripped">
+        <thead>
+            <tr>
+                <th (click)="sortList('name')" [ngClass]="{'active':sortParam === 'name'}">Product Name
+                    <img *ngIf="sortParam === 'name' && !sortConfig[sortParam].sortOrder" src="../../../assets/images/sort-up.png" alt="up_arrow">
+                    <img *ngIf="sortParam === 'name' && sortConfig[sortParam].sortOrder" src="../../../assets/images/down_arrow.png" alt="down_arrow">
+                    <img *ngIf="sortParam !== 'name'" src="../../../assets/images/sort-up.png" alt="up_arrow">
+                </th>
+                <th (click)="sortList('price')" [ngClass]="{'active':sortParam === 'price'}">Price
+                    <img *ngIf="sortParam === 'price' && !sortConfig[sortParam].sortOrder" src="../../../assets/images/sort-up.png" alt="up_arrow">
+                    <img *ngIf="sortParam === 'price' && sortConfig[sortParam].sortOrder" src="../../../assets/images/down_arrow.png" alt="down_arrow">
+                    <img *ngIf="sortParam !== 'price'" src="../../../assets/images/sort-up.png" alt="up_arrow">
+                </th>
+                <th (click)="sortList('category')" [ngClass]="{'active':sortParam === 'category'}">Category
+                    <img *ngIf="sortParam === 'category' && !sortConfig[sortParam].sortOrder" src="../../../assets/images/sort-up.png" alt="up_arrow">
+                    <img *ngIf="sortParam === 'category' && sortConfig[sortParam].sortOrder" src="../../../assets/images/down_arrow.png" alt="down_arrow">
+                    <img *ngIf="sortParam !== 'category'" src="../../../assets/images/sort-up.png" alt="up_arrow">
+                </th>
+            </tr>
+        </thead>
+
+
+        <tbody>
+            <tr *ngFor="let product of productList  | orderBy: sortParam: sortOrder">
+                <td>{{product.name}}
+                </td>
+                <td>{{product.price}}</td>
+                <td>{{product.category}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
